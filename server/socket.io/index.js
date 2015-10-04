@@ -11,7 +11,7 @@ module.exports = function (server, config) {
   io.sockets.on('connection', function (socket) {
 
     // DISCONNECT
-    require('./disconnect')(audience, connections, io, socket, speaker, title)
+    require('./disconnect')(audience, connections, io, socket, speaker, title);
 
     // JOIN
     require('./join')(audience, io, socket);
@@ -19,7 +19,7 @@ module.exports = function (server, config) {
     // START PRESENTATION
     require('./start')(io, socket, speaker, title);
 
-    // WELCOME
+    // WELCOME (includes questions)
     require('./welcome')(audience, socket, speaker, title);
 
     connections.push(socket);
@@ -28,6 +28,6 @@ module.exports = function (server, config) {
 
   console.log("Connected: %s sockets connected.", connections.length);
   console.log(`Listening, via socket.io,  at http://localhost:${config.port}`);
-}
+};
 
 
