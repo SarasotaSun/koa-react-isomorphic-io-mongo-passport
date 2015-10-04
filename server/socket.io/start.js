@@ -6,8 +6,7 @@ module.exports = function(io, socket, speaker, title)
 
   socket.on('start', function(payload) {
     console.log('payload name: ' + payload.name);
-    debugger;
-    speaker.name = payload.name
+    speaker.name = payload.name;
     speaker.id = this.id;
     speaker.type = 'speaker';
     title = payload.title;
@@ -15,6 +14,4 @@ module.exports = function(io, socket, speaker, title)
     io.sockets.emit('start', { title: title, speaker: speaker });
     console.log("Presentation Started: '%s' by %s", title, speaker.name);
   });
-
-
-}
+};
