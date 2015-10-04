@@ -1,5 +1,5 @@
 {
-  "name": "koa-react-isomorphic-io-mongo-passport-master-master",
+  "name": "koa-react-isomorphic-io-mongo-passport-master",
   "version": "0.0.1",
   "description": "Koa, React , React-Router, Socket IO, Mongo &amp; Passport",
   "main": "./server index.js",
