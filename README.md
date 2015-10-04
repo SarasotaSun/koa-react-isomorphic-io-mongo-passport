@@ -13,11 +13,11 @@ In react-router 1.0.0 RC-1, to successfully pass state to child routes, I did th
 
 1. Clone element with children:
 
-     renderChild = () =>
-       React.cloneElement(this.props.children, {
-         emit: this.emit.bind(this),
-         ...this.state
-       });
+       renderChild = () =>
+         React.cloneElement(this.props.children, {
+           emit: this.emit.bind(this),
+           ...this.state
+         });
 
 2. Pass that to the child routes:
        
