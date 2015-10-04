@@ -1,0 +1,22 @@
+{
+  "name": "koa-react-isomorphic-io-mongo-passport-master-master",
+  "version": "1.0.0",
+  "description": "Koa, React , React-Router, Socket IO, Mongo &amp; Passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srqseo/koa-react-isomorphic-io-mongo-passport-master.git"
+  },
+  "keywords": [
+    "koa", "react", "react-router", "socket.io", "mongodb", "passport", "koa"
+  ],
+  "author": "Sarasota Sun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srqseo/koa-react-isomorphic-io-mongo-passport-master/issues"
+  },
+  "homepage": "https://github.com/srqseo/koa-react-isomorphic-io-mongo-passport-master#readme"
+}
