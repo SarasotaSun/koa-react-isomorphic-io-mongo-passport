@@ -19,7 +19,7 @@ module.exports = function (server, config) {
     // START PRESENTATION
     require('./start')(io, socket, speaker, title);
 
-    //WELCOME
+    // WELCOME
     require('./welcome')(audience, socket, speaker, title);
 
     connections.push(socket);
