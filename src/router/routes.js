@@ -20,6 +20,6 @@ export default (
       paths: ['questions'],
       component: require('../components/parts/Questions')
     }) }
-    <Route path="*" component={ require('../components/NotFound') } />
+    <Route path="*" component={ require('../pages/NotFound') } />
   </Route>
 );
