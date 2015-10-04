@@ -11,7 +11,6 @@ let config = require('./config')[env]
 require('./config/middleware')(app);
 
 app.use(staticCache(config.distPath, {maxAge: 365 * 24 * 60 * 60}))
-app.use(staticCache(config.appPath, {maxAge: 365 * 24 * 60 * 60}))
 
 app.use(function* index() {
   yield send(this, config.rootPath + '/index.html');
