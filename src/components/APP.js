@@ -24,7 +24,7 @@ export default class APP extends Component {
 
   componentWillMount() {
     this.socket = io('http://localhost:3000');
-    // this.socket.on('ask', this.ask.bind(this));
+    this.socket.on('ask', this.ask.bind(this));
     this.socket.on('audience', this.updateAudience.bind(this));
     this.socket.on('end', this.updateState.bind(this));
     this.socket.on('connect', this.connect.bind(this));
@@ -35,7 +35,6 @@ export default class APP extends Component {
   }
 
   ask(question) {
-    console.log('this came from question: ' + question);
     sessionStorage.answer = '';
     this.setState({ currentQuestion: question });
   }
