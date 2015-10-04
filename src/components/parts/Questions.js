@@ -5,21 +5,21 @@ export default class Questions extends Component {
   static propTypes = {
     emit: PropTypes.func,
     questions: PropTypes.array
-  }
+  };
 
-  constructor() {
-    super();
-  }
+constructor() {
+  super();
+  this.ask = this.ask.bind(this);
+}
 
-  ask(question) {
-    console.log('this question: ' + JSON.stringify(question));
-    this.props.emit('ask', question);
-  }
+ ask(question) {
+   this.props.emit('ask', { question: question });
+ }
 
   addQuestion(question, index) {
     return (
       <div key={ index } className="col-xs-12 col-sm-6 col-md-3">
-        <span onClick={ this.ask.bind(null, question) }>{ question.q }</span>
+        <span onClick={ () => this.ask(question) }>{ question.q }</span>
       </div>
     );
   }
