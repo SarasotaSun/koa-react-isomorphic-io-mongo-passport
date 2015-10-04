@@ -2,7 +2,7 @@ import path from 'path';
 import webpack  from 'webpack';
 
 let JS_REGEX = /\.js$|\.jsx$|\.es6$|\.babel$/;
-let rootPath = path.normalize(__dirname + '../../')
+let rootPath = path.normalize(__dirname + '../../');
 
 module.exports = {
   devtool: 'eval',
@@ -22,11 +22,11 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      //{
-      //  test: JS_REGEX,
-      //  exclude: /node_modules/,
-      //  loader: 'eslint'
-      //}
+      {
+        test: JS_REGEX,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
     ],    
     loaders: [{
       test: JS_REGEX,
@@ -40,9 +40,9 @@ module.exports = {
     }
     ]
   },
-  // eslint: {
-  //  configFile: '.eslintrc'
-  //},
+   eslint: {
+    configFile: '.eslintrc'
+  },
   // for koa middleware
    devServer: {
         host: process.env.USER_IP || 'localhost',
