@@ -3,7 +3,6 @@
 
 module.exports = function(io, socket, speaker, title)
 {
-
   socket.on('start', function(payload) {
     console.log('payload name: ' + payload.name);
     speaker.name = payload.name;

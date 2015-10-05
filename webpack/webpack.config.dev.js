@@ -27,40 +27,40 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint'
       }
-    ],    
+    ],
     loaders: [{
       test: JS_REGEX,
       loaders: ['babel'],
       include: path.join(rootPath, 'src')
     },
-    {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader',
-      exclude: /node_modules/
-    }
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+        exclude: /node_modules/
+      }
     ]
   },
-   eslint: {
+  eslint: {
     configFile: '.eslintrc'
   },
   // for koa middleware
-   devServer: {
-        host: process.env.USER_IP || 'localhost',
-        port: 3000,
-        publicPath: '/',        // Where webpack exposes bundles
-                                //  on its own in-memory file system 
-        hot: true,              // Switch on Hot Module Replacement
-        indexEntry: 'index',    // Entry to add HNR code to (EntryChunk or CommonsChunk)
-        secure: true,           // use https or http
-        stats: {
-            colors: true,
-            hash: false,
-            timings: false,
-            assets: true,
-            chunks: true,
-            chunkModules: true,
-            modules: false,
-            children: true
-        }
+  devServer: {
+    host: process.env.USER_IP || 'localhost',
+    port: 3000,
+    publicPath: '/',        // Where webpack exposes bundles
+                            //  on its own in-memory file system
+    hot: true,              // Switch on Hot Module Replacement
+    indexEntry: 'index',    // Entry to add HNR code to (EntryChunk or CommonsChunk)
+    secure: true,           // use https or http
+    stats: {
+      colors: true,
+      hash: false,
+      timings: false,
+      assets: true,
+      chunks: true,
+      chunkModules: true,
+      modules: false,
+      children: true
     }
+  }
 };

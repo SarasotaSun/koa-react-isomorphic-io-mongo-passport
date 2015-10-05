@@ -35,6 +35,7 @@ export default class APP extends Component {
   }
 
   ask(question) {
+    console.log('i am in APP ask question');
     sessionStorage.answer = '';
     this.setState({ currentQuestion: question });
   }
