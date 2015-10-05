@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class Questions extends Component {
 
   static propTypes = {
-    emit: PropTypes.func,
+    emit: PropTypes.func.sRequired,
     questions: PropTypes.array
   };
 
@@ -12,7 +12,7 @@ constructor() {
 }
 
  ask(question) {
-   this.props.emit('ask', { question: question });
+   this.props.emit('ask', question);
  }
 
   addQuestion(question, index) {
