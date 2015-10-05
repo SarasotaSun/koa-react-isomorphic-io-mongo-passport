@@ -12,7 +12,7 @@ export default class Speaker extends Component {
     member: PropTypes.object,
     questions: PropTypes.array,
     status: React.PropTypes.string
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ export default class Speaker extends Component {
         <Display if= { this.props.status === 'connected' } >
           <Display if= { this.props.member.name && this.props.member.type === 'speaker' } >
             <Questions questions= { questions } emit= { this.props.emit } />
-            <Attendance audience= { this.props.audience }/>
+            <Attendance audience= { this.props.audience } />
           </Display>
           <Display if= { !this.props.member.name } >
             <h2>Start the Presentation</h2>

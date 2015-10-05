@@ -12,7 +12,6 @@ constructor() {
 }
 
  ask(question) {
-   console.log('Asked Question: ' + JSON.stringify(question));
    this.props.emit('ask', question);
  }
 

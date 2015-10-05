@@ -7,7 +7,7 @@ require('../styles/app.css');
 export default class APP extends Component {
   static propTypes = {
     children: PropTypes.element
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -24,6 +24,7 @@ export default class APP extends Component {
 
   componentWillMount() {
     this.socket = io('http://localhost:3000');
+
     this.socket.on('ask', this.ask.bind(this));
     this.socket.on('audience', this.updateAudience.bind(this));
     this.socket.on('end', this.updateState.bind(this));
@@ -35,7 +36,7 @@ export default class APP extends Component {
   }
 
   ask(question) {
-    console.log('i am in APP ask question');
+    console.log('server changed question to : ' + this.state.currentQuestion);
     sessionStorage.answer = '';
     this.setState({ currentQuestion: question });
   }
