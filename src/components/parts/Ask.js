@@ -4,6 +4,7 @@ import Display from './Display';
 export default class Ask extends Component {
 
     static propTypes = {
+      emit: PropTypes.function,
       question: PropTypes.object
     }
 
@@ -24,7 +25,7 @@ export default class Ask extends Component {
   }
 
   setUpChoices() {
-    var choices = Object.keys(this.props.question.bind(this));
+    const choices = Object.keys(this.props.question.bind(this));
     choices.shift();
     this.setState({
       choices: choices,
@@ -41,12 +42,12 @@ export default class Ask extends Component {
     });
   }
 
-  addChoiceButton(choice, i) {
+  addChoiceButton(choice, index) {
     const buttonTypes = ['primary', 'success', 'warning', 'danger'];
 
     return (
-      <button key={index}
-              className={ "col-xs-12 col-sm-6 btn btn-" + buttonTypes[index] }
+      <button key={ index }
+              className={ 'col-xs-12 col-sm-6 btn btn-' + buttonTypes[index] }
               onClick={ this.select.bind(null, choice) }>
         { choice }: { this.props.question[choice] }
       </button>

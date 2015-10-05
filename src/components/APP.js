@@ -13,7 +13,7 @@ export default class APP extends Component {
     super(props, context);
     this.state = ({
       audience: [],
-      currentQuestion: false,
+      currentQuestion: {},
       member: {},
       questions: [],
       speaker: {},
