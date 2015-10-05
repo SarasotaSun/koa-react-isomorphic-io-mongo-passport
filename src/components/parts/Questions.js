@@ -9,7 +9,6 @@ export default class Questions extends Component {
 
 constructor() {
   super();
-  this.ask = this.ask.bind(this);
 }
 
  ask(question) {
