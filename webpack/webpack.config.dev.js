@@ -22,11 +22,11 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      //{
-      //  test: JS_REGEX,
-      //  exclude: /node_modules/,
-      //  loader: 'eslint'
-      //}
+      {
+        test: JS_REGEX,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
     ],
     loaders: [{
       test: JS_REGEX,
