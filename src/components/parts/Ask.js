@@ -58,15 +58,23 @@ export default class Ask extends Component {
     });
   }
 
+  wasQuestionedAnswered() {
+    if (this.state.answer.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
-    console.log('Ask Curr Q: ' + this.props.currentQuestion);
+    console.log('this.state.answer: ' + this.state.answer.length);
     return (
       <div id="currentQuestion">
-        <Display if={ this.state.answer }>
+        <Display if={ this.wasQuestionedAnswered() }>
           <h3>You answered: { this.state.answer }</h3>
           <p>{ this.props.question[this.state.answer] }</p>
         </Display>
-        <Display if={ !this.state.answer }>
+        <Display if={ !this.wasQuestionedAnswered() }>
           <h2>{ this.props.question.question }</h2>
           <div className="row">
             { this.state.choices.map(this.addChoiceButton.bind(this)) }

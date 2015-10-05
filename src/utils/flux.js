@@ -12,7 +12,7 @@ class Flux extends Alt {
       .map(this.registerCouple);
   }
 
-  registerCouple = ::this.registerCouple
+  registerCouple = ::this.registerCouple;
   registerCouple(name) {
     this.addActions(name, require(`actions/${name}`));
     this.addStore(name, require(`stores/${name}`));

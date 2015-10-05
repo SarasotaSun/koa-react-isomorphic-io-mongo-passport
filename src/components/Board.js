@@ -16,5 +16,5 @@ Board.defaultProps = {
 };
 
 Board.propTypes = {
-  title: React.PropTypes.string.isRequired
+  title: React.PropTypes.string
 };

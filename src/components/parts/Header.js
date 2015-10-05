@@ -5,7 +5,7 @@ export default class Header extends Component {
     speaker: PropTypes.object,
     status: PropTypes.string,
     title: PropTypes.string
-  }
+  };
 
   render() {
     return (

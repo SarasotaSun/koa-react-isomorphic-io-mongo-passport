@@ -6,9 +6,11 @@ import Join from './parts/Join';
 export default class Audience extends Component {
   static propTypes = {
     audience: PropTypes.array,
-    currentQuestion: PropTypes.any,
+    currentQuestion: PropTypes.object,
     emit: PropTypes.func,
     member: PropTypes.object,
+    question: PropTypes.object,
+    questionAsked: PropTypes.bool,
     status: React.PropTypes.string,
     title: React.PropTypes.string
   };
@@ -18,11 +20,15 @@ export default class Audience extends Component {
   }
 
   wasQuestionAsked() {
-    return this.props.currentQuestion.question !== undefined;
+    if (this.props.currentQuestion.currentQuestion !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {
-    console.log('wasQuestionAsked : ' + this.wasQuestionAsked());
+    //console.log('wasQuestionAsked : ' + JSON.stringify(this.props.currentQuestion.currentQuestion.question));
     return (
       <div>
         <Display if={ this.props.status === 'connected' }>
@@ -36,7 +42,7 @@ export default class Audience extends Component {
             </Display>
 
             <Display if={ this.wasQuestionAsked() }>
-              <Ask question= { this.props.currentQuestion } />
+              <Ask question={this.props.currentQuestion.currentQuestion} emit={this.props.emit} />
             </Display>
 
           </Display>

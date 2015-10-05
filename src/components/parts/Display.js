@@ -5,7 +5,7 @@ export default class Display extends Component {
   static propTypes = {
     children: PropTypes.node,
     if: PropTypes.bool
-  }
+  };
 
 
   render() {

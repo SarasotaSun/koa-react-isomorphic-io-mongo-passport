@@ -1,6 +1,6 @@
 'use strict';
 import path from 'path';
-let rootPath = path.normalize(__dirname + '../../../')
+let rootPath = path.normalize(__dirname + '../../../');
 
 module.exports = {
 
@@ -22,4 +22,4 @@ module.exports = {
         distPath : rootPath + 'dist/',
         secret : 'devSecret'
     }
-}
+};

@@ -14,6 +14,7 @@ export default class APP extends Component {
     this.state = ({
       audience: [],
       currentQuestion: {},
+      questionAsked: false,
       member: {},
       questions: [],
       speaker: {},
@@ -38,7 +39,7 @@ export default class APP extends Component {
   ask(question) {
     console.log('server changed question to : ' + this.state.currentQuestion);
     sessionStorage.answer = '';
-    this.setState({ currentQuestion: question });
+    this.setState({ currentQuestion: question, questionAsked: true });
   }
 
   connect() {

@@ -5,7 +5,8 @@ module.exports = function (server, config) {
   let io = require('socket.io').listen(server);
   let audience = [];
   let connections = [];
-  let currentQuestion = false;
+  let currentQuestion = {};
+  let questionAsked = false;
   let speaker = {};
   let title = UNITITLED_PRESENTATION;
 
@@ -15,7 +16,7 @@ module.exports = function (server, config) {
     require('./disconnect')(audience, connections, io, socket, speaker, title);
 
     // CURRENT QUESTION
-    require('./askQuestion')(currentQuestion, io, socket);
+    require('./askQuestion')(currentQuestion, io, questionAsked, socket);
 
     // JOIN
     require('./join')(audience, io, socket);
@@ -24,7 +25,7 @@ module.exports = function (server, config) {
     require('./start')(io, socket, speaker, title);
 
     // WELCOME (includes questions)
-    require('./welcome')(audience, currentQuestion, socket, speaker, title);
+    require('./welcome')(audience, currentQuestion, questionAsked, socket, speaker, title);
 
     connections.push(socket);
     console.log("Connected: %s sockets remaining.", connections.length);

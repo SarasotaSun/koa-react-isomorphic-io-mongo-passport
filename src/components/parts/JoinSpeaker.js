@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 export default class JoinSpeaker extends Component {
   static propTypes = {
     emit: PropTypes.func
-  }
+  };
 
   start() {
     const speakerName = ReactDOM.findDOMNode(this.refs.name).value;

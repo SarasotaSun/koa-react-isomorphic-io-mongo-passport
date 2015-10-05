@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 export default class Join extends Component {
     static propTypes = {
       emit: PropTypes.func
-    }
+    };
 
   join() {
     const memberName = ReactDOM.findDOMNode(this.refs.name).value;

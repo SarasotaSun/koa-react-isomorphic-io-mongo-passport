@@ -9,8 +9,8 @@ import ErrorPage from 'pages/server-error';
 
 class AltResolver {
 
-  _toResolve = []
-  _firstClientSideRender = !(process.env.NODE_ENV === 'test')
+  _toResolve = [];
+  _firstClientSideRender = !(process.env.NODE_ENV === 'test');
 
   resolve(promise: Function, later = false) {
     if (process.env.BROWSER && !later) {

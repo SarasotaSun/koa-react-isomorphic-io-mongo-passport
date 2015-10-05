@@ -4,7 +4,7 @@ export default class Attendance extends Component {
 
   static propTypes = {
     audience: PropTypes.array
-  }
+  };
 
 	addMemberRow(member, index) {
   return (

@@ -19,4 +19,4 @@ module.exports = function(audience, io, socket)
     console.log("Audience Member Name %s", payload.name + '\n');
   });
 
-}
+};
