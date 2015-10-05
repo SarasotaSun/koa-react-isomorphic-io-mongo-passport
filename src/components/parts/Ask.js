@@ -4,7 +4,7 @@ import Display from './Display';
 export default class Ask extends Component {
   static propTypes = {
     currentQuestion: PropTypes.any,
-    //emit: PropTypes.function,
+    emit: PropTypes.function,
     question: PropTypes.object
   };
 
@@ -13,7 +13,7 @@ export default class Ask extends Component {
     this.state = {
       choices: [],
       answer: undefined
-    }
+    };
   }
 
   componentWillMount() {
@@ -24,13 +24,18 @@ export default class Ask extends Component {
     this.setUpChoices();
   }
 
-  setUpChoices() {
-    const choices = Object.keys(this.props.question);
-    choices.shift();
-    this.setState({
-      choices: choices,
-      answer: sessionStorage.answer
-    });
+
+  addChoiceButton(choice, index) {
+    const buttonTypes = ['primary', 'success', 'warning', 'danger'];
+
+    return (
+      <button key={ index }
+              className={ 'col-xs-12 col-sm-6 btn btn-' + buttonTypes[index] }
+              // es6 with isolated 'this' for choice and not component
+              onClick={ () => this.select(choice) }>
+        { choice }: { this.props.question[choice] }
+      </button>
+    );
   }
 
   select(choice) {
@@ -42,16 +47,15 @@ export default class Ask extends Component {
     });
   }
 
-  addChoiceButton(choice, index) {
-    const buttonTypes = ['primary', 'success', 'warning', 'danger'];
-
-    return (
-      <button key={ index }
-              className={ 'col-xs-12 col-sm-6 btn btn-' + buttonTypes[index] }
-              onClick={ () => this.select(choice) }>
-        { choice }: { this.props.question[choice] }
-      </button>
-    );
+  setUpChoices() {
+    // getting choices dynamically in case multuple choices are jagged per question.
+    const choices = Object.keys(this.props.question); // includes question
+    // don't need the question, so remove it from choices array
+    choices.shift();
+    this.setState({
+      choices: choices,
+      answer: sessionStorage.answer
+    });
   }
 
   render() {

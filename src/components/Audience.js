@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Display from './parts/Display';
-// import Ask from './parts/Ask';
+import Ask from './parts/Ask';
 import Join from './parts/Join';
 
 export default class Audience extends Component {
@@ -36,7 +36,7 @@ export default class Audience extends Component {
             </Display>
 
             <Display if={ this.wasQuestionAsked() }>
-              <h2>{ this.props.currentQuestion.question }</h2>
+              <Ask question= { this.props.currentQuestion } />
             </Display>
 
           </Display>
