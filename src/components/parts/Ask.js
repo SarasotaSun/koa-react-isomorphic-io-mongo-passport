@@ -59,11 +59,7 @@ export default class Ask extends Component {
   }
 
   wasQuestionedAnswered() {
-    if (this.state.answer.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.state.answer.length > 0;
   }
 
   render() {

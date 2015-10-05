@@ -20,15 +20,10 @@ export default class Audience extends Component {
   }
 
   wasQuestionAsked() {
-    if (this.props.currentQuestion.currentQuestion !== undefined) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.props.currentQuestion.currentQuestion !== undefined;
   }
 
   render() {
-    //console.log('wasQuestionAsked : ' + JSON.stringify(this.props.currentQuestion.currentQuestion.question));
     return (
       <div>
         <Display if={ this.props.status === 'connected' }>
@@ -42,7 +37,7 @@ export default class Audience extends Component {
             </Display>
 
             <Display if={ this.wasQuestionAsked() }>
-              <Ask question={this.props.currentQuestion.currentQuestion} emit={this.props.emit} />
+              <Ask question={ this.props.currentQuestion.currentQuestion } emit={ this.props.emit } />
             </Display>
 
           </Display>
