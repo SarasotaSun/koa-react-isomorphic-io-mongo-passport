@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Display from './parts/Display';
-import Ask from './parts/Ask';
+// import Ask from './parts/Ask';
 import Join from './parts/Join';
 
 export default class Audience extends Component {
@@ -18,7 +18,7 @@ export default class Audience extends Component {
   }
 
   wasQuestionAsked() {
-    return  this.props.currentQuestion.q !== undefined;
+    return this.props.currentQuestion.question !== undefined;
   }
 
   render() {
@@ -29,14 +29,14 @@ export default class Audience extends Component {
 
           <Display if={ this.props.member.name !== undefined }>
 
-            <Display if={!this.wasQuestionAsked() }>
+            <Display if={ !this.wasQuestionAsked() }>
               <h2>Welcome { this.props.member.name }</h2>
               <p>{ this.props.audience.length } audience members connected</p>
               <p>Questions will appear here.</p>
             </Display>
 
             <Display if={ this.wasQuestionAsked() }>
-              <h2>{ this.props.currentQuestion.q }</h2>
+              <h2>{ this.props.currentQuestion.question }</h2>
             </Display>
 
           </Display>
@@ -47,7 +47,6 @@ export default class Audience extends Component {
           </Display>
 
         </Display>
-
       </div>
     );
   }

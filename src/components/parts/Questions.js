@@ -18,7 +18,7 @@ constructor() {
   addQuestion(question, index) {
     return (
       <div key={ index } className="col-xs-12 col-sm-6 col-md-3">
-        <span onClick={ () => this.ask(question) }>{ question.q }</span>
+        <span onClick={ () => this.ask(question) }>{ question.question }</span>
       </div>
     );
   }

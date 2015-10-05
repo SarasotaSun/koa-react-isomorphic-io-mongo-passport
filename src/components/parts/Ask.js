@@ -63,7 +63,7 @@ export default class Ask extends Component {
           <p>{ this.props.question[this.state.answer] }</p>
         </Display>
         <Display if={ !this.state.answer }>
-          <h2>{ this.props.question.q }</h2>
+          <h2>{ this.props.question.question }</h2>
           <div className="row">
             { this.state.choices.map(this.addChoiceButton.bind(this)) }
           </div>
