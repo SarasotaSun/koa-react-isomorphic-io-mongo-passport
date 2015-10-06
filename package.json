@@ -81,7 +81,7 @@
     "normalize.css": "^3.0.3",
     "react": "^0.14.0-rc1",
     "react-bootstrap": "^0.25.100-react-pre.1",
-    "react-d3": "^0.4.0",
+    "react-d3-components": "^0.5.2",
     "react-dom": "^0.14.0-rc1",
     "react-intl": "^1.2.0",
     "react-router": "^1.0.0-rc1",

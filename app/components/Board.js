@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Display from './parts/Display';
-const BarChart = require('react-d3').BarChart;
+import { BarChart } from 'react-d3-components';
 
-export default class Board extends Component {
+class Board extends React.Component {
 
   static propTypes = {
     currentQuestion: PropTypes.object,
@@ -11,10 +11,12 @@ export default class Board extends Component {
   };
 
   barGraphData(results) {
+    console.log('Object.keys(results): ' + Object.keys(results));
     return Object.keys(results).map(function(choice) {
+      console.log('choice: ' + results[choice]);
       return {
-        label: choice,
-        value: results[choice]
+        x: choice,
+        y: results[choice]
       };
     });
   }
@@ -24,28 +26,24 @@ export default class Board extends Component {
   }
 
   render() {
-    console.log('this.props.currentQuestion: ' + JSON.stringify(this.props.currentQuestion));
+    const data = [{ label: '', values: this.barGraphData(this.props.results) }];
     return (
       <div id="scoreboard">
 
         <Display if={ this.props.status === 'connected' && this.wasQuestionAsked() }>
-          <h3>{ this.props.currentQuestion.query }</h3>
-          <p>{ JSON.stringify(this.props.results) }</p>
-          <BarChart
-              data={ this.barGraphData(this.props.results) }
-              title={ this.props.currentQuestion.query }
-          />
-          { /* <BarChart data={ this.barGraphData(this.props.results) }
-                    title={ this.props.currentQuestion.query }
-                    height={ window.innerHeight * 0.6 }
-                    width={ window.innerWidth * 0.9 } /> */}
+          <h3 style={ { color: 'red' } }>{ this.props.currentQuestion.query }</h3>
+          <BarChart data={ data } width={ 400 } height={ 400 }
+                    margin={ { top: 10, bottom: 50, left: 50, right: 10 } }/>
         </Display>
 
         <Display if={ this.props.status === 'connected' && !this.wasQuestionAsked() }>
           <h3>Awaiting a Question <blink> ....</blink></h3>
         </Display>
-
       </div>
     );
   }
 }
+
+export default Board;
+
+

@@ -37,6 +37,11 @@ export default class APP extends Component {
     this.socket.on('welcome', this.updateState.bind(this));
   }
 
+  componentShouldMount(nextProps, nextState) {
+    console.log('Should Component Update?');
+    return nextState !== this.state;
+  }
+
   askQuestion(question) {
     // clear prior answers on new question
     sessionStorage.answer = '';
