@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Header extends Component {
   static propTypes = {
-    speaker: PropTypes.object,
+    speaker: PropTypes.string,
     status: PropTypes.string,
     title: PropTypes.string
   };
@@ -12,10 +12,10 @@ export default class Header extends Component {
       <header className="row">
         <div className="col-xs-10">
           <h1>{ this.props.title }</h1>
-            <p>{ this.props.speaker.name }</p>
+          <p>{ this.props.speaker }</p>
         </div>
         <div className="col-xs-2">
-         <span id="connection-status" className={ this.props.status }></span>
+          <span id="connection-status" className={ this.props.status }></span>
         </div>
       </header>
     );

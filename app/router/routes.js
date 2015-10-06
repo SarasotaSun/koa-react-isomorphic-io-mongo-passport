@@ -18,7 +18,7 @@ export default (
     }) },
     { generateRoute({
       paths: ['questions'],
-      component: require('../components/parts/Questions')
+      component: require('../components/parts/AskQuestion')
     }) }
     <Route path="*" component={ require('../pages/NotFound') } />
   </Route>

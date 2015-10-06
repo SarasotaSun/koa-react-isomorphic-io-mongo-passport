@@ -7,12 +7,11 @@ export default class Display extends Component {
     if: PropTypes.bool
   };
 
-
   render() {
     return (
-    	<div>
-    	{ this.props.if ? <div> { this.props.children } </div> : null }
-    	</div>
-    	);
+      <div>
+        { this.props.if ? <div> { this.props.children } </div> : null }
+      </div>
+    );
   }
 }

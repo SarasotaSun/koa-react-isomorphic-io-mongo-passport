@@ -6,7 +6,8 @@ require('../styles/app.css');
 
 export default class APP extends Component {
   static propTypes = {
-    children: PropTypes.element
+    children: PropTypes.element,
+    emit: PropTypes.func
   };
 
   constructor(props, context) {
@@ -14,10 +15,10 @@ export default class APP extends Component {
     this.state = ({
       audience: [],
       currentQuestion: {},
-      questionAsked: false,
-      member: {},
+      member: {},  // socket users, ie speaker and member
       questions: [],
-      speaker: {},
+      results: {},
+      speaker: '', // speaker is listed because multiple members have 1 speaker
       status: 'disconnected',
       title: ''
     });
@@ -25,32 +26,32 @@ export default class APP extends Component {
 
   componentWillMount() {
     this.socket = io('http://localhost:3000');
-
-    this.socket.on('ask', this.ask.bind(this));
+    this.socket.on('askQuestion', this.askQuestion.bind(this));
     this.socket.on('audience', this.updateAudience.bind(this));
-    this.socket.on('end', this.updateState.bind(this));
+    this.socket.on('endPresentation', this.updateState.bind(this));
     this.socket.on('connect', this.connect.bind(this));
     this.socket.on('disconnect', this.disconnect.bind(this));
     this.socket.on('joined', this.joined.bind(this));
-    this.socket.on('start', this.start.bind(this));
+    this.socket.on('results', this.updateResults.bind(this));
+    this.socket.on('speakerStart', this.speakerStart.bind(this));
     this.socket.on('welcome', this.updateState.bind(this));
   }
 
-  ask(question) {
-    console.log('server changed question to : ' + this.state.currentQuestion);
+  askQuestion(question) {
+    // clear prior answers on new question
     sessionStorage.answer = '';
-    this.setState({ currentQuestion: question, questionAsked: true });
+    this.setState({ currentQuestion: question });
   }
 
   connect() {
     const member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : null;
-
+    // Keep member in session storage and user refreshes page
     if (member && member.type === 'audience') {
       this.emit('join', member);
+      // Keep speaker in session storage and user refreshes page
     } else if (member && member.type === 'speaker') {
-      this.emit('start', { name: member.name, title: sessionStorage.title });
+      this.emit('speakerStart', { name: member.name, title: sessionStorage.title });
     }
-
     this.setState({ status: 'connected' });
   }
 
@@ -67,12 +68,14 @@ export default class APP extends Component {
   }
 
   joined(member) {
+    // Keep this member in session storage
     sessionStorage.member = JSON.stringify(member);
     this.setState({ member: member });
   }
 
-  start(presentation) {
+  speakerStart(presentation) {
     if (this.state.member.type === 'speaker') {
+      // save title info if speaker refreshes page
       sessionStorage.title = presentation.title;
     }
     this.setState(presentation);
@@ -82,12 +85,18 @@ export default class APP extends Component {
     this.setState({ audience: newAudience });
   }
 
+  updateResults(data) {
+    this.setState({ results: data });
+  }
+
   updateState(serverState) {
     this.setState(serverState);
   }
 
   renderChild = () =>
     React.cloneElement(this.props.children, {
+      // this needs to be passed to all child routes so they
+      // can emit to parent (APP)
       emit: this.emit.bind(this),
       ...this.state
     });
@@ -95,11 +104,9 @@ export default class APP extends Component {
   render() {
     return (
       <div>
-        <Header {...this.state } />
-        { React.Children
-          .map(this.props.children, this.renderChild) }
+        <Header { ...this.state } />
+        { React.Children.map(this.props.children, this.renderChild) }
       </div>
     );
   }
 }
-

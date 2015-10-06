@@ -7,18 +7,18 @@ export default class Questions extends Component {
     questions: PropTypes.array
   };
 
-constructor() {
-  super();
-}
+  constructor() {
+    super();
+  }
 
- ask(question) {
-   this.props.emit('ask', question);
- }
+  ask(question) {
+    this.props.emit('askQuestion', question);
+  }
 
   addQuestion(question, index) {
     return (
       <div key={ index } className="col-xs-12 col-sm-6 col-md-3">
-        <span onClick={ () => this.ask(question) }>{ question.question }</span>
+        <span onClick={ () => this.ask(question) }>{ question.query }</span>
       </div>
     );
   }

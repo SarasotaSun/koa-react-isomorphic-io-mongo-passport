@@ -11,7 +11,7 @@ var rootPath = path.normalize(__dirname + '../../')
 module.exports = {
   devtool: 'source-map',
   entry: [
-    './src/index'
+    './app/index'
   ],
   output: {
     path: path.join(rootPath, 'dist'),
@@ -35,7 +35,7 @@ module.exports = {
     loaders: [{
       test: JS_REGEX,
       loaders: ['babel'],
-      include: path.join(rootPath, 'src')
+      include: path.join(rootPath, 'app')
     },
       {
         test: /\.css$/,

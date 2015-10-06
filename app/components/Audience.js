@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Display from './parts/Display';
-import Ask from './parts/Ask';
+import AskQuestion from './parts/AskQuestion';
 import Join from './parts/Join';
 
 export default class Audience extends Component {
@@ -10,7 +10,6 @@ export default class Audience extends Component {
     emit: PropTypes.func,
     member: PropTypes.object,
     question: PropTypes.object,
-    questionAsked: PropTypes.bool,
     status: React.PropTypes.string,
     title: React.PropTypes.string
   };
@@ -20,7 +19,7 @@ export default class Audience extends Component {
   }
 
   wasQuestionAsked() {
-    return this.props.currentQuestion.currentQuestion !== undefined;
+    return this.props.currentQuestion.query !== undefined;
   }
 
   render() {
@@ -37,7 +36,7 @@ export default class Audience extends Component {
             </Display>
 
             <Display if={ this.wasQuestionAsked() }>
-              <Ask question={ this.props.currentQuestion.currentQuestion } emit={ this.props.emit } />
+              <AskQuestion question={ this.props.currentQuestion } emit={ this.props.emit } />
             </Display>
 
           </Display>
@@ -52,4 +51,3 @@ export default class Audience extends Component {
     );
   }
 }
-

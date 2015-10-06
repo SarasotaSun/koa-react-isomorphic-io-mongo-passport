@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client',
-    './src/index'
+    './app/index'
   ],
   output: {
     path: path.join(rootPath, 'dist'),
@@ -22,16 +22,16 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      //{
-      //  test: JS_REGEX,
-      //  exclude: /node_modules/,
-      //  loader: 'eslint'
-      //}
+      {
+        test: JS_REGEX,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
     ],
     loaders: [{
       test: JS_REGEX,
       loaders: ['babel'],
-      include: path.join(rootPath, 'src')
+      include: path.join(rootPath, 'app')
     },
       {
         test: /\.css$/,

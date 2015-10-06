@@ -9,7 +9,7 @@ export default class JoinSpeaker extends Component {
   start() {
     const speakerName = ReactDOM.findDOMNode(this.refs.name).value;
     const title = ReactDOM.findDOMNode(this.refs.title).value;
-    this.props.emit('start', { name: speakerName, title: title });
+    this.props.emit('speakerStart', { name: speakerName, title: title });
   }
 
   render() {
@@ -23,7 +23,7 @@ export default class JoinSpeaker extends Component {
         <label>Presentation Title</label>
         <input ref="title"
                className="form-control"
-               placeholder="enter a title for this Presentation..."
+               placeholder="Enter a title for this Presentation..."
                required/>
         <button className="btn btn-primary">Join</button>
       </form>

@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 
 export default class Join extends Component {
-    static propTypes = {
-      emit: PropTypes.func
-    };
+  static propTypes = {
+    emit: PropTypes.func
+  };
 
   join() {
     const memberName = ReactDOM.findDOMNode(this.refs.name).value;
@@ -19,10 +19,11 @@ export default class Join extends Component {
         <input ref="name"
                name="name"
                className="form-control"
-               placeholder="enter your full name..."
+               placeholder="Enter Your Full Name..."
                required/>
         <button className="btn btn-primary">Join</button>
         <Link to="/speaker">Start the presentation</Link>
+        <Link to="/board">Go to the Board</Link>
       </form>
     );
   }
